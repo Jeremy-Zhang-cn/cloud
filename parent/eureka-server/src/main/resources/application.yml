@@ -1,0 +1,16 @@
+server:
+  port: ${PORT:10010}
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到服务中心, 单机状态eureka-server不需要
+    fetch-registry: false # 是否从eureka-server拉取注册信息, 单机状态eureka-server本身不需要
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://eureka-server:10010/eureka/} # 注册服务器地址, 服务器使用自身地址
+  server:
+    enable-self-preservation: false # 是否开启自我保护模式
+    eviction-interval-timer-in-ms: 6000 # 服务注册表清理间隔（单位毫秒 默认 60 * 1000）
+  instance:
+    hostname: ${EUREKA_DOMAIN:eureka-server}
