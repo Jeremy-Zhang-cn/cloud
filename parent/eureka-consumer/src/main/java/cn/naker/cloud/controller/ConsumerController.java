@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  */
 
 @RestController
-@RequestMapping(value = "/sys/consumer")
+@RequestMapping(value = "/sys/eureka/consumer")
 public class ConsumerController {
 
 	@Resource
@@ -27,7 +27,7 @@ public class ConsumerController {
 	@GetMapping(value = "/consumeServices")
 	public String consumeServices() {
 		ServiceInstance instance = loadBalancerClient.choose("eureka-provider");
-		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/sys/provider/getServices";
+		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/sys/eureka/provider/getServices";
 		System.out.println(url);
 		return restTemplate.getForObject(url, String.class);
 	}

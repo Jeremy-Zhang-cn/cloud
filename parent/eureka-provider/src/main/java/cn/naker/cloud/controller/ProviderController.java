@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  */
 
 @RestController
-@RequestMapping(value = "/sys/provider")
+@RequestMapping(value = "/sys/eureka/provider")
 public class ProviderController {
 
 	@Resource
