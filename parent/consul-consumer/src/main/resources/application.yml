@@ -1,0 +1,17 @@
+server:
+  port: 10014
+spring:
+  application:
+    name: consul-consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: true
+        service-name: consul-consumer
+        ip-address: ${IP_ADDRESS:127.0.0.1}
+        prefer-ip-address: true # 将ip地址注册到consul
+        health-check-interval: 15s
+        tags: ${spring.cloud.consul.discovery.ip-address}:${server.port}/${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port} # 指定实例ID
