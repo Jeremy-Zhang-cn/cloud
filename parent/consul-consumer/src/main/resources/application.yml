@@ -9,6 +9,8 @@ spring:
       port: 8500
       discovery:
         register: true
+        heartbeat:
+          enabled: true
         service-name: consul-consumer
         ip-address: ${IP_ADDRESS:127.0.0.1}
         prefer-ip-address: true # 将ip地址注册到consul
