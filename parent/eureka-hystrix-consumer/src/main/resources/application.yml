@@ -14,3 +14,6 @@ eureka:
     prefer-ip-address: true
     ip-address: ${IP_ADDRESS:127.0.0.1}
     instance-id: ${spring.application.name}:${server.port}
+feign:
+  hystrix:
+    enabled: true

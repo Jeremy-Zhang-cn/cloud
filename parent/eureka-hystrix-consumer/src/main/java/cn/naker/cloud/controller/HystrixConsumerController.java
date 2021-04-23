@@ -31,4 +31,9 @@ public class HystrixConsumerController {
 		return "fallback";
 	}
 
+	@GetMapping(value = "fallbackConsume")
+	public String fallbackConsume() {
+		return providerService.consumeServices();
+	}
+
 }
