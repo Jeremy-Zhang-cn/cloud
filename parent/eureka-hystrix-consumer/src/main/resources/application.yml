@@ -1,0 +1,16 @@
+server:
+  port: 10017
+spring:
+  application:
+    name: eureka-hystrix-consumer
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:10010/eureka/}
+  instance:
+    hostname: ${spring.application.name}
+    prefer-ip-address: true
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.application.name}:${server.port}
