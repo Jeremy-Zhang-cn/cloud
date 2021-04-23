@@ -14,6 +14,7 @@
 		<module>consul-provider</module>
 		<module>consul-consumer</module>
 		<module>eureka-ribbon-consumer</module>
+		<module>eureka-feign-consumer</module>
 	</modules>
 	<packaging>pom</packaging>
 
