@@ -16,6 +16,7 @@
 		<module>eureka-ribbon-consumer</module>
 		<module>eureka-feign-consumer</module>
 		<module>eureka-hystrix-consumer</module>
+		<module>api-gateway-zuul</module>
 	</modules>
 	<packaging>pom</packaging>
 
