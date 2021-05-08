@@ -17,6 +17,7 @@
 		<module>eureka-feign-consumer</module>
 		<module>eureka-hystrix-consumer</module>
 		<module>api-gateway-zuul</module>
+		<module>spring-security</module>
 	</modules>
 	<packaging>pom</packaging>
 
