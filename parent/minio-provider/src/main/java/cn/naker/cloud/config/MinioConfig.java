@@ -28,16 +28,8 @@ public class MinioConfig {
 		return SingletonClient.SINGLETON_CLIENT.getMinioClient(endpoint, accessKey, accessToken);
 	}
 
-
 	public String getEndpoint() {
 		return endpoint;
 	}
 
-	public String getAccessKey() {
-		return accessKey;
-	}
-
-	public String getAccessToken() {
-		return accessToken;
-	}
 }
