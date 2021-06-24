@@ -1,6 +1,7 @@
 package cn.naker.cloud.util;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,10 @@ public class SpringContextUtils implements ApplicationContextAware {
 
 	public static <T> T getBean(String name, Class<T> clazz) {
 		return getApplicationContext().getBean(name, clazz);
+	}
+
+	public static DefaultListableBeanFactory getBeanFactory() {
+		return (DefaultListableBeanFactory) getApplicationContext().getAutowireCapableBeanFactory();
 	}
 
 }

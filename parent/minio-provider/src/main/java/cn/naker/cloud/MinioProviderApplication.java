@@ -1,5 +1,6 @@
 package cn.naker.cloud;
 
+import cn.naker.cloud.listener.CustomListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -20,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 public class MinioProviderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MinioProviderApplication.class, args);
+		SpringApplication application = new SpringApplication(MinioProviderApplication.class);
+		application.addListeners(new CustomListener());
+		application.run(args);
 	}
 
 	@Bean

@@ -27,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author Zhang Dingjie
  * @date 2021/6/22
- * @Description
+ * @Description Minio工具类，容器上下文加载完成后才能使用
  */
 
 public class MinioUtils {
@@ -37,10 +37,16 @@ public class MinioUtils {
 	protected static volatile MinioClient MINIO_CLIENT;
 
 
+	/**
+	* @Author Zhang Dingjie
+	* @Date 2021/6/24
+	* @Param []
+	* @return void
+	* @description 初始化方法，在SpringBootApplication容器加载完成后会被调用，为endpoint和client赋初值
+	**/
 	public static void init() {
 		MinioConfig config = SpringContextUtils.getBean(MinioConfig.class);
 		ENDPOINT = config.getEndpoint();
-		System.out.println(ENDPOINT);
 		if (MINIO_CLIENT == null) {
 			synchronized (MinioUtils.class) {
 				if (MINIO_CLIENT == null) {
@@ -55,7 +61,6 @@ public class MinioUtils {
 	}
 
 	public static void makeBucket(String bucketName) throws IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, ServerException, InternalException, XmlParserException, ErrorResponseException {
-		init();
 		boolean bucketExists = MINIO_CLIENT.bucketExists(BucketExistsArgs.builder()
 				.bucket(bucketName).build());
 		if (!bucketExists) {
@@ -64,7 +69,6 @@ public class MinioUtils {
 	}
 
 	public static void setPolicy(String bucketName, MinioPolicy policy) throws IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, ServerException, InternalException, XmlParserException, ErrorResponseException {
-		init();
 		MINIO_CLIENT.setBucketPolicy(SetBucketPolicyArgs.builder()
 				.bucket(bucketName)
 				.config(policy.getConfig(bucketName))
@@ -98,14 +102,12 @@ public class MinioUtils {
 	}
 
 	public static InputStream downloadFile(String bucketName, String objectKey) throws IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, ServerException, InternalException, XmlParserException, ErrorResponseException {
-		init();
 		return MINIO_CLIENT.getObject(GetObjectArgs.builder()
 				.bucket(bucketName)
 				.object(objectKey).build());
 	}
 
 	public static void deleteFile(String bucketName, String objectKey) throws IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, ServerException, InternalException, XmlParserException, ErrorResponseException {
-		init();
 		MINIO_CLIENT.removeObject(RemoveObjectArgs.builder()
 				.bucket(bucketName).object(objectKey)
 				.build());
@@ -119,7 +121,6 @@ public class MinioUtils {
 	* @description 获取文件签名地址，有效时间单位: 秒
 	**/
 	public static String getSignedUrl(String bucketName, String objectKey, int expires) throws IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, ServerException, InternalException, XmlParserException, ErrorResponseException {
-		init();
 		return MINIO_CLIENT.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
 				.method(Method.GET)
 				.bucket(bucketName)
