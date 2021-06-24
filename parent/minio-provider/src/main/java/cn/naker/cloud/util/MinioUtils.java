@@ -36,6 +36,7 @@ public class MinioUtils {
 	protected static String ENDPOINT;
 	protected static volatile MinioClient MINIO_CLIENT;
 
+	private MinioUtils() {}
 
 	/**
 	* @Author Zhang Dingjie
