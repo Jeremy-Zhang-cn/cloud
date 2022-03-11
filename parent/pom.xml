@@ -22,6 +22,8 @@
 		<module>cloud-common</module>
 		<module>nacos-provider</module>
 		<module>nacos-consumer</module>
+		<module>nacos-config-provider</module>
+		<module>nacos-config-consumer</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -86,6 +88,12 @@
 				<groupId>cn.hutool</groupId>
 				<artifactId>hutool-all</artifactId>
 				<version>5.7.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>19.0</version>
 			</dependency>
 
 		</dependencies>

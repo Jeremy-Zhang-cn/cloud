@@ -1,0 +1,15 @@
+server:
+  port: ${PORT:10023}
+
+spring:
+  application:
+    name: nacos-config-provider
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: 192.168.198.1:8848
+        file-extension: yaml
+      discovery:
+        enabled: true
+        server-addr: 192.168.198.1:8848
