@@ -24,6 +24,8 @@
 		<module>nacos-consumer</module>
 		<module>nacos-config-provider</module>
 		<module>nacos-config-consumer</module>
+		<module>rocketmq-producer</module>
+		<module>rocketmq-consumer</module>
 	</modules>
 	<packaging>pom</packaging>
 

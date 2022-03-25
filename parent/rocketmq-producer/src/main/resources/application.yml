@@ -1,0 +1,15 @@
+server:
+  port: ${PORT:10025}
+
+spring:
+  application:
+    name: rocketmq-provider
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 172.16.30.134:8848
+rocketmq:
+  name-server: 172.16.30.134:9876
+  producer:
+    group: my-producper-group
