@@ -9,7 +9,8 @@ spring:
       discovery:
         enabled: true
         server-addr: 172.16.30.134:8848
-rocketmq:
-  name-server: 172.16.30.134:9876
-  producer:
-    group: my-producper-group
+      config:
+        enabled: true
+        server-addr: 172.16.30.134:8848
+        file-extension: yaml
+
