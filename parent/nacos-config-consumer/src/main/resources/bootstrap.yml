@@ -8,8 +8,8 @@ spring:
     nacos:
       config:
         enabled: true
-        server-addr: 192.168.198.1:8848
+        server-addr: 172.16.30.33:8850
         file-extension: yaml
       discovery:
         enabled: true
-        server-addr: 192.168.198.1:8848
+        server-addr: 172.16.30.33:8850

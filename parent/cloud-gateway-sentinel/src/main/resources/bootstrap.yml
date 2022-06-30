@@ -1,0 +1,31 @@
+server:
+  port: ${PORT:10027}
+
+spring:
+  application:
+    name: cloud-gateway-sentinel
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 172.16.30.33:8850
+      config:
+        enabled: true
+        server-addr: 172.16.30.33:8850
+        file-extension: yaml
+
+#    sentinel:
+#      transport:
+#        dashboard: 172.16.30.33:8080
+#      scg:
+#        fallback:
+#          mode: response
+#          response-status: 200
+#          response-body: '{"code": 200, "message":"请求失败，稍后重试!"}'
+#
+#    gateway:
+#      routes:
+#        - id: nacos-config-consumer
+#          uri: lb://nacos-config-consumer
+#          predicates:
+#            - Path=/sys/nacos-config/consumer/**

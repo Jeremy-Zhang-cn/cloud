@@ -26,6 +26,7 @@
 		<module>nacos-config-consumer</module>
 		<module>rocketmq-producer</module>
 		<module>rocketmq-consumer</module>
+		<module>cloud-gateway-sentinel</module>
 	</modules>
 	<packaging>pom</packaging>
 
