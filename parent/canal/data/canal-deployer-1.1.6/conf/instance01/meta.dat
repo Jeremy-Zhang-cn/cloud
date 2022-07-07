@@ -1,0 +1,1 @@
+{"clientDatas":[{"clientIdentity":{"clientId":1001,"destination":"instance01","filter":"cloud.t_canal"},"cursor":{"identity":{"slaveId":-1,"sourceAddress":{"address":"DESKTOP-TQ11LTH","port":3306}},"postion":{"gtid":"","included":false,"journalName":"DESKTOP-TQ11LTH-bin.000415","position":2548,"serverId":1,"timestamp":1657165081000}}}],"destination":"instance01"}
