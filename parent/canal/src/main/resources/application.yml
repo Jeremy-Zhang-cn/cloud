@@ -1,0 +1,6 @@
+server:
+  port: ${PORT:10028}
+
+spring:
+  application:
+    name: canal-deployer
