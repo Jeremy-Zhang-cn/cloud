@@ -28,6 +28,7 @@
 		<module>rocketmq-consumer</module>
 		<module>cloud-gateway-sentinel</module>
 		<module>canal</module>
+		<module>algorithms</module>
 	</modules>
 	<packaging>pom</packaging>
 
