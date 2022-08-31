@@ -31,7 +31,7 @@ public class Solution {
 			} else if (chars[i] >= 'A' && chars[i] <= 'Z') {
 				tmpNum = chars[i] - 'A' + 10;
 			} else {
-				tmpNum = chars[i];
+				tmpNum = Integer.parseInt(String.valueOf(chars[i]));
 			}
 			/*
 			 *  高位到低位一次进行 转换 相加
