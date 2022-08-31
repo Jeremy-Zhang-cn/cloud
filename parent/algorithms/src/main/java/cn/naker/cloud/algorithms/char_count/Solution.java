@@ -17,6 +17,7 @@ public class Solution {
 		while (scanner.hasNext()) {
 			getCount(scanner.nextLine());
 		}
+		scanner.close();
 	}
 
 	public static void getCount(String str) {
