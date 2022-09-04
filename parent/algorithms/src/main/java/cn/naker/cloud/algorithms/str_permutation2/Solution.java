@@ -1,4 +1,4 @@
-package cn.naker.cloud.algorithms.str_permutation;
+package cn.naker.cloud.algorithms.str_permutation2;
 
 /**
  * 面试题 08.08. 有重复字符串的排列组合
