@@ -29,6 +29,9 @@
 		<module>cloud-gateway-sentinel</module>
 		<module>canal</module>
 		<module>algorithms</module>
+		<module>rabbitmq-provider</module>
+		<module>rabbitmq-common</module>
+		<module>rabbitmq-consumer</module>
 	</modules>
 	<packaging>pom</packaging>
 
