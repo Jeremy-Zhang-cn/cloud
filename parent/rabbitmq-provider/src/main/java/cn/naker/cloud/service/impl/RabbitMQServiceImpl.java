@@ -2,13 +2,19 @@ package cn.naker.cloud.service.impl;
 
 import cn.naker.cloud.service.RabbitMQService;
 import cn.naker.cloud.config.RabbitMQConfig;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageDeliveryMode;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -70,6 +76,22 @@ public class RabbitMQServiceImpl implements RabbitMQService {
 		map.put("sendTime", sendTime);
 		map.put("msg", msg);
 		return map;
+	}
+
+	@Override
+	public String sendMsgByHeaders(String msg, Map<String, Object> headers) {
+		try {
+			MessageProperties messageProperties = new MessageProperties();
+			messageProperties.setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+			messageProperties.setContentType("UTF-8");
+			messageProperties.getHeaders().putAll(headers);
+			Message message = new Message(msg.getBytes(StandardCharsets.UTF_8), messageProperties);
+			rabbitTemplate.convertAndSend(RabbitMQConfig.HEADERS_EXCHANGE_DEMO_NAME, null, message);
+			return "ok";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 	}
 
 }

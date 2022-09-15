@@ -1,12 +1,16 @@
 package cn.naker.cloud.controller;
 
 import cn.naker.cloud.service.RabbitMQService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author Zhang Dingjie
@@ -34,6 +38,13 @@ public class RabbitMQProviderController {
 	public String sendTopicMsg(@RequestParam(name = "msg") String msg,
 							   @RequestParam(name = "routingKey") String routingKey) {
 		return rabbitMQService.sendMsgByTopic(msg, routingKey);
+	}
+
+	@PostMapping(value = "/sendHeadersMsg")
+	public String sendHeadersMsg(@RequestParam(name = "msg") String msg, @RequestParam(name = "json") String json) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Map map = mapper.readValue(json, Map.class);
+		return rabbitMQService.sendMsgByHeaders(msg, map);
 	}
 
 }
